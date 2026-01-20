@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kegiatan NHKBP Sirisirisi</title>
+<style>
+body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fbc2eb,#a6c1ee);padding:15px;color:#333;}
+.container{max-width:600px;margin:auto;}
+.hero,.card{background:#fff;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+.hero{text-align:center;}
+.hero h1{margin:0;color:#ff6f61;font-size:28px;}
+.hero h2{margin:6px 0 0;font-weight:normal;color:#555;}
+.trip-info{margin-top:14px;background:#e0f7fa;padding:14px;border-radius:14px;font-weight:bold;color:#006064;line-height:1.5;}
+h3{margin-top:0;color:#ff6f61;}
+input,textarea,button{width:100%;padding:12px;font-size:16px;margin-top:8px;border-radius:10px;border:1px solid #ccc;}
+input:focus,textarea:focus{outline:none;border-color:#ff6f61;}
+button{background:#ff6f61;color:white;border:none;font-weight:bold;cursor:pointer;transition:0.3s;}
+button:hover{background:#d8433f;}
+.suggestions div{padding:10px;border-bottom:1px solid #eee;cursor:pointer;transition:0.2s;background:#fff;}
+.suggestions div:hover{background:#ffe0b2;transform:scale(1.03);}
+.status{padding:4px 10px;border-radius:12px;font-size:14px;font-weight:bold;display:inline-block;margin-right:6px;}
+.lunas{background:#dcedc8;color:#33691e;}
+.belum{background:#ffebee;color:#c62828;}
+.countdown{background:#fff9c4;padding:14px;border-left:6px solid #fbc02d;font-weight:bold;border-radius:10px;text-align:center;font-size:16px;}
+.expired{background:#ffebee;border-left:6px solid #c62828;color:#c62828;}
+.announcement{line-height:1.7;font-size:15px;}
+.result-box{padding:12px;margin-top:10px;border-radius:12px;transition:0.3s;cursor:pointer;background:#fff3e0;opacity:0;transform:translateY(10px);}
+.result-box.show{opacity:1;transform:translateY(0);}
+.footer{text-align:center;font-size:13px;color:#666;margin-top:10px;}
+.info-team{margin-top:10px;background:#f3e5f5;padding:12px;border-radius:12px;line-height:1.6;}
+.info-team span{font-weight:bold;color:#6a1b9a;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>✨ Kegiatan Refleksi, Syukuran<br>dan Kebersamaan</h1>
+  <h2>NHKBP Sirisirisi</h2>
+  <div class="trip-info">
+    📍 Doloksanggul → Samosir (Tomok)<br>
+    📅 23 – 24 Januari 2026
+  </div>
+</div>
+
+<div class="card">
+<h3>📝 Informasi Umum</h3>
+<div id="infoUmum" class="announcement">
+Loading informasi umum...
+</div>
+</div>
+
+<div class="card">
+<h3>🔍 Cek Data Peserta</h3>
+<input id="search" placeholder="Ketik nama lengkap kamu..." autocomplete="off">
+<div class="suggestions" id="suggestions"></div>
+<div id="result"></div>
+</div>
+
+<div class="card">
+        <h1>🌟 Halo teman-teman Naposo! 😎🎉</h1>
+        <p>Persiapkan diri kalian untuk kegiatan paling seru awal tahun 2026! Kita akan mengadakan:</p>
+
+        <h2>💫 “Refleksi, Syukuran, dan Kebersamaan NHKBP Sirisirisi” 💫</h2>
+
+        <p>
+            <span class="highlight">📅 Tanggal:</span> 23–24 Januari 2026<br>
+            <span class="highlight">📍 Rute Perjalanan:</span> Doloksanggul → Samosir (Tomok)<br>
+            <span class="highlight">👕 Dresscode:</span> Dinas Naposo + Kaos Hitam
+        </p>
+
+        <h2>✨ Apa yang menanti kita?</h2>
+        <ul>
+            <li>Momen <strong>refleksi pribadi & kelompok</strong> untuk memulai tahun baru dengan hati penuh syukur 💖</li>
+            <li>Suasana <strong>kebersamaan yang hangat</strong> dengan teman-teman Naposo 😄</li>
+            <li>Kesempatan untuk <strong>mengabadikan setiap momen seru</strong> dengan foto & video 📸</li>
+            <li>Aktivitas yang pastinya <strong>fun, berwarna, dan tak terlupakan</strong> 🌈</li>
+        </ul>
+
+        <p>
+            <span class="highlight">🚗 Titik Kumpul:</span> Halaman Gereja NHKBP Sirisirisi, Jumat Pukul 16:00 WIB<br>
+            🕒 Jangan terlambat, karena kita akan <strong>berangkat bersama-sama!</strong>
+        </p>
+
+        <div class="footer">💛 Semangat Naposo, semangat kebersamaan! 💛</div>
+
+<div class="card">
+<div id="countdown" class="countdown"></div>
+</div>
+
+<div class="card">
+<h3>💬 Komentar / Konfirmasi</h3>
+<textarea id="comment" rows="4" placeholder="Tulis komentar atau kendala..."></textarea>
+<button id="sendBtn">Kirim</button>
+
+<div class="info-team">
+<p>📌 <span>Koordinator:</span> Derio / Afrvydo</p>
+<p>📌 <span>Dana / Konsumsi / Biaya:</span> Erika Purba</p>
+<p>📌 <span>Acara / Rundown:</span> Dien</p>
+<p>📌 <span>Destinasi / Transportasi:</span> Leri Simamora</p>
+<p>📌 <span>Kerohanian:</span> Anita</p>
+<p>📌 <span>Dokumentasi:</span> Benget</p>
+</div>
+</div>
+
+<div class="footer">Panitia Kegiatan NHKBP Sirisirisi • 2026</div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbw5Jy1pQuUCp5v8xPLvAFT0BhKAyUB5qo4cZt7Il7WQaRchLo0re7oGR9MUZV1t1Geq/exec"; // Ganti dengan Web App URL
+const DEADLINE = new Date("2026-01-22T23:59:00");
+
+const searchInput = document.getElementById("search");
+const suggestionsBox = document.getElementById("suggestions");
+const resultBox = document.getElementById("result");
+const commentInput = document.getElementById("comment");
+const sendBtn = document.getElementById("sendBtn");
+const countdownBox = document.getElementById("countdown");
+const infoUmumBox = document.getElementById("infoUmum");
+
+let peserta = [];
+let selectedName = "";
+
+// Fetch data peserta & info umum
+fetch(API_URL)
+  .then(res=>res.json())
+  .then(data=>{
+    peserta = data.peserta;
+    infoUmumBox.innerHTML = data.infoUmum.replace(/\n/g,"<br>");
+  })
+  .catch(err=>console.error("Gagal fetch data:",err));
+
+// Autocomplete
+searchInput.addEventListener("input", ()=>{
+  const keyword = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+  if(!keyword) return;
+  peserta.filter(p=>p.nama.toLowerCase().includes(keyword)).forEach(p=>{
+    const div = document.createElement("div");
+    div.textContent = p.nama;
+    div.onclick = ()=> showPeserta(p);
+    suggestionsBox.appendChild(div);
+  });
+});
+
+// Tampilkan detail peserta
+function showPeserta(p){
+  selectedName = p.nama;
+  searchInput.value = p.nama;
+  suggestionsBox.innerHTML = "";
+  const emojiBeras = p.beras==='Lunas'?'✅':'❌';
+  const emojiPerjalanan = p.perjalanan==='Lunas'?'✅':'❌';
+  resultBox.innerHTML = `
+    <div class="result-box show">
+      🚗 Mobil: ${p.mobil}<br>
+      🍚 Beras: <span class="status ${p.beras==='Lunas'?'lunas':'belum'}">${emojiBeras} ${p.beras}</span><br>
+      💰 Perjalanan: <span class="status ${p.perjalanan==='Lunas'?'lunas':'belum'}">${emojiPerjalanan} ${p.perjalanan}</span><br>
+      👥 Keanggotaan: ${p.keanggotaan}<br>
+      ℹ️ Informasi Peserta: ${p.informasi}
+    </div>
+  `;
+}
+
+// Kirim komentar
+sendBtn.addEventListener("click", ()=>{
+  const komentar = commentInput.value.trim();
+  if(!selectedName || !komentar){ alert("Nama dan komentar wajib diisi"); return; }
+  fetch(API_URL,{
+    method:"POST",
+    body: JSON.stringify({ nama:selectedName, komentar:komentar })
+  }).then(()=>{
+    alert("Komentar berhasil dikirim!");
+    commentInput.value="";
+  });
+});
+
+// Countdown
+setInterval(()=>{
+  const now = new Date();
+  const diff = DEADLINE - now;
+  if(diff<=0){
+    countdownBox.className="countdown expired";
+    countdownBox.textContent="⛔ Waktu Pengumpulan Telah Berakhir";
+    return;
+  }
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  const s=Math.floor((diff/1000)%60);
+  countdownBox.textContent=`⏳ Sisa Waktu Pengumpulan: ${d} hari ${h} jam ${m} menit ${s} detik`;
+},1000);
+</script>
+</body>
+</html>
